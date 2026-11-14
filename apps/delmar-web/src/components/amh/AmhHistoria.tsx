@@ -85,30 +85,31 @@ export function AmhHistoria() {
         <div className="mt-8 grid items-center gap-6 rounded-3xl border border-stone-200 bg-white p-6 shadow-sm md:grid-cols-12 md:p-8">
           <div className="overflow-hidden rounded-2xl md:col-span-4">
             <img
-              src="/images/historia/comunidade-vizinhos.jpg"
-              alt="De Vizinho para Vizinho — Supermercado Casa Del Mar"
-              className="h-56 w-full object-cover"
+              src="/images/delmar-mascote.webp"
+              alt="Mascote Delmar de avental vermelho, com um cesto de pão e frescos, a dar as boas-vindas"
+              width={1536} height={1024}
+              loading="lazy"
+              className="aspect-[3/2] h-auto w-full bg-amh-cream object-contain"
             />
           </div>
           <div className="md:col-span-8">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-amh-cream px-3 py-1 text-xs font-bold text-amh-red">
               <HeartHandshake className="h-3.5 w-3.5" />
-              De Vizinho para Vizinho
+              Novidades & Promoções Delmar
             </span>
             <h3 className="mt-3 text-2xl font-extrabold text-amh-navy">
-              Atendimento próximo, agora também online
+              Olá, vizinho! Veja o que temos de bom para si.
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-amh-slate sm:text-base">
-              Do balcão tradicional à reserva digital sem filas: mantemos o mesmo cuidado na
-              escolha da fruta, do pão quente e da charcutaria ao corte, agora com portal próprio
-              para os moradores do prédio, do Furadouro e de Ovar.
+              Pão fresquinho, frescos para a sua mesa e oportunidades para as compras do dia a dia.
+              Consulte os nossos folhetos e descubra as novidades da sua loja do Furadouro.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
-                href="/catalogo"
+                href="/folhetos"
                 className="rounded-full bg-amh-red px-5 py-2.5 text-sm font-bold text-white transition hover:bg-amh-red-deep"
               >
-                Fazer Reserva na Loja
+                Ver promoções da loja
               </Link>
               <a
                 href={STORE_PROFILE.facebookPhotosUrl}
