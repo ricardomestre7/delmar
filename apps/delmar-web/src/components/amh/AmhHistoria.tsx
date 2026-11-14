@@ -105,6 +105,22 @@ export function AmhHistoria() {
               Pão fresquinho, frescos para a sua mesa e oportunidades para as compras do dia a dia.
               Consulte os nossos folhetos e descubra as novidades da sua loja do Furadouro.
             </p>
+            <figure className="mt-6 overflow-hidden rounded-2xl border border-stone-200 bg-amh-navy shadow-sm">
+              <video
+                controls
+                playsInline
+                preload="none"
+                poster="/videos/delmar-apresentacao.jpg"
+                width={1280}
+                height={720}
+                aria-label="Vídeo de boas-vindas do mascote Delmar, com voz"
+                className="aspect-video h-auto w-full object-contain"
+              >
+                <source src="/videos/delmar-apresentacao.mp4" type="video/mp4" />
+                O seu navegador não suporta este vídeo. <a href="/videos/delmar-apresentacao.mp4">Abrir vídeo do Delmar</a>.
+              </video>
+              <figcaption className="px-4 py-3 text-xs leading-relaxed text-white">O Delmar dá-lhe as boas-vindas. Toque em reproduzir para ouvir a mensagem.</figcaption>
+            </figure>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
                 href="/folhetos"
