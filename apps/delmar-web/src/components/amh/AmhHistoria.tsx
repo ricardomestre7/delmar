@@ -19,8 +19,8 @@ const TIMELINE_ITEMS = [
   {
     era: 'Evolução',
     title: 'Supermercado Delmar',
-    image: '/images/historia/fachada-delmar-classica.jpg',
-    caption: 'Modernização dos espaços e reforço da secção de frescos, padaria e mercearia.',
+    image: '/images/historia/delmar-ha-11-anos.png',
+    caption: 'A fachada de há 11 anos: uma memória da casa que continua a acompanhar o Furadouro.',
   },
   {
     era: 'Presente',
@@ -125,4 +125,5 @@ export function AmhHistoria() {
     </section>
   );
 }
+
 

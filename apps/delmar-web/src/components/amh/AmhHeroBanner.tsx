@@ -1,11 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, MapPin, ShoppingBag, Sparkles } from 'lucide-react';
 import { STORE_PROFILE } from '@/lib/store-data';
 
 export function AmhHeroBanner() {
+  const [take, setTake] = useState(0);
   return (
     <section className="relative overflow-hidden bg-amh-cream">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-20">
@@ -59,19 +60,26 @@ export function AmhHeroBanner() {
           className="lg:col-span-5"
         >
           <div className="relative overflow-hidden rounded-3xl bg-amh-navy text-white shadow-2xl">
-            <div className="relative flex min-h-64 flex-col items-center justify-center gap-5 bg-black px-8 py-8">
-              <img src="/images/delmar-logo.jpeg" alt="Supermercado Delmar" width={1080} height={540} className="h-auto w-full max-w-sm object-contain" fetchPriority="high" />
-              <img
-                src="/images/historia/fachada-amanhecer.jpg"
-                alt="Fachada atual do Supermercado Casa Del Mar Amanhecer no Furadouro"
-                width={147} height={148}
-                className="h-36 w-36 rounded-xl border border-white/20 object-contain"
-              />
-
-              <span className="absolute right-4 top-4 rounded-full bg-amh-red px-3 py-1 text-xs font-bold shadow">
-                No coração do Furadouro
-              </span>
+            <div className="bg-black px-6 py-4">
+              <img src="/images/delmar-logo.jpeg" alt="Supermercado Delmar" width={1080} height={540} className="mx-auto h-24 w-full max-w-xs object-contain" />
             </div>
+            <figure className="m-0">
+              <div className="relative aspect-[4/3] overflow-hidden bg-stone-200">
+                <img
+                  key={take}
+                  src="/images/historia/delmar-ha-11-anos.png"
+                  alt="Fachada do Supermercado Delmar há 11 anos, com a entrada e as montras voltadas para a rua"
+                  width={680} height={510}
+                  fetchPriority="high"
+                  className="delmar-facade-approach h-full w-full object-contain"
+                />
+                <span className="absolute left-4 top-4 rounded-full bg-amh-navy/90 px-3 py-1.5 text-xs font-semibold text-white">Memórias do Delmar · há 11 anos</span>
+              </div>
+              <figcaption className="flex flex-wrap items-center justify-between gap-3 px-6 py-5">
+                <p className="max-w-xs text-lg font-semibold leading-snug">O tempo passa.<br /><span className="text-amh-cream">A sua casa continua aqui.</span></p>
+                <button type="button" onClick={() => setTake((n) => n + 1)} className="rounded-full border border-white/30 px-4 py-2 text-xs font-semibold transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">Rever aproximação ↻</button>
+              </figcaption>
+            </figure>
 
             <div className="p-7 pt-3">
               <div className="border-b border-white/15 pb-4">

@@ -52,3 +52,17 @@ body {
   }
 }
 
+
+
+/* Uma aproximação discreta à fotografia de arquivo, sem movimento contínuo. */
+@keyframes delmar-facade-approach {
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
+}
+.delmar-facade-approach {
+  transform-origin: 52% 48%;
+  animation: delmar-facade-approach 4.5s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .delmar-facade-approach { animation: none; transform: none; }
+}
