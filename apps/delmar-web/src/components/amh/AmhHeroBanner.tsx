@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { ArrowRight, MapPin, ShoppingBag, Sparkles } from 'lucide-react';
 import { STORE_PROFILE } from '@/lib/store-data';
 
@@ -10,10 +9,7 @@ export function AmhHeroBanner() {
   return (
     <section className="relative overflow-hidden bg-amh-cream">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
+        <div
           className="lg:col-span-7"
         >
           <div className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-amh-red shadow-sm">
@@ -27,9 +23,9 @@ export function AmhHeroBanner() {
           </h1>
 
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-amh-slate sm:text-xl">
-            No <strong>{STORE_PROFILE.name}</strong> encontra pão quente todos os dias, fruta e
-            legumes selecionados, talho e charcutaria ao corte — com os preços e a marca própria
-            da rede parceira <strong>Amanhecer</strong>.
+            Pão fresquinho, saladas vindas da horta diariamente e o atendimento próximo de
+            quem faz parte do Furadouro. No <strong>Delmar</strong>, cada visita tem o cuidado
+            de uma casa de família.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3.5">
@@ -56,25 +52,24 @@ export function AmhHeroBanner() {
             </span>
             <span>Tel: {STORE_PROFILE.phoneFormatted}</span>
           </div>
-        </motion.div>
+        </div>
 
         {/* Cartão visual lateral da loja */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.45, delay: 0.1 }}
+        <div
           className="lg:col-span-5"
         >
           <div className="relative overflow-hidden rounded-3xl bg-amh-navy text-white shadow-2xl">
-            <div className="relative h-48 w-full overflow-hidden">
+            <div className="relative flex min-h-64 flex-col items-center justify-center gap-5 bg-black px-8 py-8">
+              <img src="/images/delmar-logo.jpeg" alt="Supermercado Delmar" width={1080} height={540} className="h-auto w-full max-w-sm object-contain" fetchPriority="high" />
               <img
                 src="/images/historia/fachada-amanhecer.jpg"
                 alt="Fachada atual do Supermercado Casa Del Mar Amanhecer no Furadouro"
-                className="h-full w-full object-cover"
+                width={147} height={148}
+                className="h-36 w-36 rounded-xl border border-white/20 object-contain"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-amh-navy via-amh-navy/40 to-transparent" />
+
               <span className="absolute right-4 top-4 rounded-full bg-amh-red px-3 py-1 text-xs font-bold shadow">
-                Aberto Hoje
+                No coração do Furadouro
               </span>
             </div>
 
@@ -89,13 +84,13 @@ export function AmhHeroBanner() {
             <div className="mt-5 space-y-3.5 text-sm">
               <div className="rounded-2xl bg-white/10 p-4">
                 <p className="text-xs font-semibold uppercase tracking-wider text-amh-cream">
-                  Fornadas de Pão Quente
+                  Sempre pão fresquinho
                 </p>
-                <p className="mt-1 text-base font-bold">08:30 (Manhã) · 16:30 (Tarde)</p>
+                <p className="mt-1 text-base font-bold">O sabor de todos os dias, aqui tão perto.</p>
               </div>
               <div className="rounded-2xl bg-white/10 p-4">
                 <p className="text-xs font-semibold uppercase tracking-wider text-amh-cream">
-                  Horário da Loja
+                  Horário previsto · a confirmar
                 </p>
                 {STORE_PROFILE.hours.map((h) => (
                   <p key={h.days} className="mt-1 flex justify-between text-stone-200">
@@ -125,9 +120,10 @@ export function AmhHeroBanner() {
             </div>
           </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+
 

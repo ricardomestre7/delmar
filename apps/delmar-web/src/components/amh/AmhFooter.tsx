@@ -9,9 +9,7 @@ export function AmhFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div>
           <div className="flex items-center gap-2.5">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amh-red font-extrabold text-white">
-              DM
-            </div>
+            <img src="/images/delmar-logo.jpeg" alt="Supermercado Delmar" width={160} height={80} className="h-16 w-32 rounded-lg bg-black object-contain" loading="lazy" />
             <div>
               <p className="text-lg font-extrabold text-white">Casa Del Mar</p>
               <p className="text-xs text-amh-cream">Supermercado · Furadouro (Rede Amanhecer)</p>
@@ -65,6 +63,7 @@ export function AmhFooter() {
             Navegação
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
+            <li><Link href="/quem-somos" className="hover:text-white">A nossa história</Link></li>
             <li><Link href="/catalogo" className="hover:text-white">Catálogo & Frescos</Link></li>
             <li><Link href="/folhetos" className="hover:text-white">Folhetos & Ofertas</Link></li>
             <li><Link href="/marca-propria" className="hover:text-white">Marca Própria Amanhecer</Link></li>
@@ -77,8 +76,12 @@ export function AmhFooter() {
 
         <div>
           <h3 className="text-sm font-bold uppercase tracking-wider text-white">
-            Rede & Informação Legal
+            Horários & Informação
           </h3>
+          <div className="mt-4 mb-5 space-y-1 text-sm">
+            {STORE_PROFILE.hours.map((h) => <p key={h.days}>{h.days}: <span className="text-white">{h.time}</span></p>)}
+            <p className="text-xs text-stone-400">Horário previsto, sujeito a confirmação.</p>
+          </div>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li>
               <a href={STORE_PROFILE.networkUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white">
@@ -107,10 +110,11 @@ export function AmhFooter() {
           <p>
             © {new Date().getFullYear()} {STORE_PROFILE.name} — Loja Amanhecer {STORE_PROFILE.code} ({STORE_PROFILE.locality}, {STORE_PROFILE.city}).
           </p>
-          <p>Arquitetura modular Next.js inspirada na rede Amanhecer.</p>
+          <p>Da nossa casa para a sua · Tecnologia CylinderMargin</p>
         </div>
       </div>
     </footer>
   );
 }
+
 

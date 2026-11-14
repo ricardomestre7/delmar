@@ -40,7 +40,7 @@ export function AmhStoreMap() {
                 <div className="flex items-start gap-3">
                   <Clock className="mt-0.5 h-5 w-5 shrink-0 text-amh-red" />
                   <div>
-                    <p className="font-bold text-amh-navy">Horário de Funcionamento</p>
+                    <p className="font-bold text-amh-navy">Horário previsto · a confirmar</p>
                     {STORE_PROFILE.hours.map((h) => (
                       <p key={h.days}>
                         {h.days}: <strong className="text-amh-navy">{h.time}</strong>
@@ -106,4 +106,5 @@ export function AmhStoreMap() {
     </section>
   );
 }
+
 

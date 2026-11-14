@@ -49,9 +49,23 @@ export default function QuemSomosPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <p className="text-xs font-bold uppercase tracking-wider text-amh-red">A família Delmar, hoje</p>
+        <h2 className="amh-h2 mt-3 text-amh-navy">Rostos de uma casa com história.</h2>
+        <p className="mt-4 max-w-2xl leading-relaxed text-amh-slate">Sr. Pedro, Alice, Paula, Eduarda e Luísa fazem parte desta história de proximidade. Em breve, partilharemos mais memórias, fotografias e testemunhos da família.</p>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {['Sr. Pedro', 'Alice', 'Paula', 'Eduarda', 'Luísa'].map((name) => (
+            <article key={name} className="rounded-2xl border border-stone-200 bg-amh-cream/50 p-6">
+              <h3 className="text-xl font-bold text-amh-navy">{name}</h3>
+              <p className="mt-2 text-sm text-amh-slate">As suas memórias, em breve.</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <AmhHistoria />
       <AmhBigNumbers />
     </div>
   );
 }
+
 

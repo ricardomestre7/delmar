@@ -40,8 +40,8 @@ export const STORE_PROFILE: StoreProfile = {
   networkUrl: 'https://www.amanhecer.pt/',
   partnerUrl: 'https://www.recheio.pt/portal/pt-PT/amanhecer-torne-se-parceiro',
   hours: [
-    { days: 'Segunda a Sábado', time: '08:30 – 20:30' },
-    { days: 'Domingos e Feriados', time: '09:00 – 19:30' },
+    { days: 'Terça a Domingo', time: '08:00 – 20:00' },
+    { days: 'Segunda-feira', time: 'Encerrado · folga semanal' },
   ],
 };
 
@@ -52,12 +52,12 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Início', href: '/' },
-  { label: 'Catálogo & Frescos', href: '/catalogo' },
+  { label: 'Produtos', href: '/catalogo' },
   { label: 'Folhetos', href: '/folhetos' },
   { label: 'Marca Própria', href: '/marca-propria' },
-  { label: 'Novidades & Receitas', href: '/novidades' },
-  { label: 'Loja Furadouro', href: '/lojas' },
-  { label: 'Quem Somos', href: '/quem-somos' },
+  { label: 'Novidades', href: '/novidades' },
+  { label: 'Visite-nos', href: '/lojas' },
+  { label: 'A nossa história', href: '/quem-somos' },
 ];
 
 export interface BigNumber {
@@ -68,14 +68,14 @@ export interface BigNumber {
 
 export const BIG_NUMBERS: BigNumber[] = [
   {
-    value: '08:30',
-    label: 'Pão Quente de Manhã e à Tarde',
-    detail: 'Fornadas diárias às 08:30 e às 16:30 no Supermercado Casa Del Mar.',
+    value: 'Pão',
+    label: 'Sempre pão fresquinho',
+    detail: 'O sabor de uma boa visita começa na nossa padaria.',
   },
   {
-    value: '100%',
-    label: 'Frescos & Talho ao Corte',
-    detail: 'Frutas, legumes, peixaria e charcutaria preparados na hora.',
+    value: 'Horta',
+    label: 'Frescura todos os dias',
+    detail: 'Saladas vindas da horta diariamente, para levar frescura à sua mesa.',
   },
   {
     value: 'Nº 34',
@@ -83,9 +83,9 @@ export const BIG_NUMBERS: BigNumber[] = [
     detail: 'Na Av. dos Bombeiros Voluntários do Porto, a dois passos da praia.',
   },
   {
-    value: '400+',
-    label: 'Artigos Rede Amanhecer',
-    detail: 'Marca própria e campanhas de poupança disponíveis na nossa loja.',
+    value: 'Perto',
+    label: 'Atendimento com dedicação',
+    detail: 'Profissionalismo, simpatia e o cuidado de quem conhece a vizinhança.',
   },
 ];
 
@@ -247,4 +247,5 @@ export const TESTIMONIALS: TestimonialItem[] = [
     quote: 'Ótima relação qualidade-preço nos produtos Amanhecer e sempre boas sugestões no talho e charcutaria.',
   },
 ];
+
 

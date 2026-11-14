@@ -46,10 +46,8 @@ export function AmhMenu() {
       {/* Navegação principal (c/amh_Menu) */}
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amh-red text-white shadow-sm">
-            <span className="text-lg font-extrabold tracking-tight">DM</span>
-          </div>
-          <div>
+          <img src="/images/delmar-logo.jpeg" alt="Supermercado Delmar" width={180} height={90} className="h-16 w-32 shrink-0 rounded-lg bg-black object-contain sm:w-36" />
+          <div className="hidden 2xl:block">
             <div className="flex items-center gap-2">
               <span className="text-lg font-extrabold tracking-tight text-amh-navy">
                 Casa Del Mar
@@ -64,7 +62,7 @@ export function AmhMenu() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav aria-label="Navegação principal" className="hidden items-center gap-1 xl:flex">
           {NAV_ITEMS.map((item) => {
             const active = pathname === item.href;
             return (
@@ -99,8 +97,10 @@ export function AmhMenu() {
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
-            className="rounded-xl border border-stone-200 p-2 text-amh-navy lg:hidden"
-            aria-label="Abrir menu"
+            className="rounded-xl border border-stone-200 p-2 text-amh-navy xl:hidden"
+            aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="menu-mobile"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -109,8 +109,8 @@ export function AmhMenu() {
 
       {/* Menu Mobile */}
       {mobileOpen && (
-        <div className="border-t border-stone-200 bg-white px-4 py-4 lg:hidden">
-          <nav className="flex flex-col gap-1.5">
+        <div className="border-t border-stone-200 bg-white px-4 py-4 xl:hidden">
+          <nav id="menu-mobile" aria-label="Navegação móvel" className="flex flex-col gap-1.5">
             {NAV_ITEMS.map((item) => {
               const active = pathname === item.href;
               return (
@@ -139,4 +139,5 @@ export function AmhMenu() {
     </header>
   );
 }
+
 

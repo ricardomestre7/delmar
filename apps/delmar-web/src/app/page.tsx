@@ -14,6 +14,16 @@ export default function HomePage() {
     <>
       <AmhHeroBanner />
       <AmhBigNumbers />
+      <section aria-labelledby="natal-title" className="bg-amh-navy px-4 py-12 text-white sm:px-6">
+        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 md:flex-row md:items-center">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-amh-cream">Natal no Delmar · Furadouro</p>
+            <h2 id="natal-title" className="mt-3 text-3xl font-bold sm:text-4xl">Encomende a sua prenda de Natal no Delmar.</h2>
+            <p className="mt-4 leading-relaxed text-stone-300">Uma lembrança com sabor e o carinho do comércio local. Fale connosco para conhecer as opções e preparar a sua prenda.</p>
+          </div>
+          <a href="tel:+351256591235" className="inline-flex shrink-0 items-center justify-center rounded-full bg-amh-red px-7 py-4 font-bold text-white transition hover:bg-amh-red-deep">Falar com a loja →</a>
+        </div>
+      </section>
 
       {/* Secção Catálogo & Encomenda Rápida */}
       <section className="bg-white py-14 sm:py-16">
@@ -22,7 +32,7 @@ export default function HomePage() {
             <div>
               <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amh-red">
                 <Sparkles className="h-3.5 w-3.5" />
-                Sistema Próprio Casa Del Mar
+                Da nossa casa para a sua
               </span>
               <h2 className="amh-h2 mt-2 text-amh-navy">
                 Encomende Frescos & Marca Própria
@@ -53,4 +63,5 @@ export default function HomePage() {
     </>
   );
 }
+
 
