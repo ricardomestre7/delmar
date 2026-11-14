@@ -10,11 +10,11 @@ export function AmhFooter() {
         <div>
           <div className="flex items-center gap-2.5">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amh-red font-extrabold text-white">
-              A
+              DM
             </div>
             <div>
-              <p className="text-lg font-extrabold text-white">amanhecer</p>
-              <p className="text-xs text-amh-cream">Supermercado Casa Del Mar · {STORE_PROFILE.code}</p>
+              <p className="text-lg font-extrabold text-white">Casa Del Mar</p>
+              <p className="text-xs text-amh-cream">Supermercado · Furadouro (Rede Amanhecer)</p>
             </div>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-stone-400">

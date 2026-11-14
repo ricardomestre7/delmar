@@ -23,8 +23,8 @@ export interface StoreProfile {
 export const STORE_PROFILE: StoreProfile = {
   code: '3206',
   name: 'Supermercado Casa Del Mar',
-  brand: 'Amanhecer Furadouro',
-  tagline: 'A sua loja de proximidade no Furadouro — frescos todos os dias, marca própria Amanhecer e atendimento familiar.',
+  brand: 'Furadouro · Rede Amanhecer',
+  tagline: 'O seu supermercado de proximidade no Furadouro — pão quente diário, frescos selecionados, atendimento familiar e produtos da rede parceira Amanhecer.',
   address: 'Avenida dos Bombeiros Voluntários do Porto nº34',
   postalCode: '3880-352',
   locality: 'Furadouro',
@@ -68,24 +68,24 @@ export interface BigNumber {
 
 export const BIG_NUMBERS: BigNumber[] = [
   {
-    value: '750+',
-    label: 'Lojas Amanhecer em Portugal',
-    detail: 'Rede nacional de proximidade com a força do grupo Recheio.',
-  },
-  {
-    value: '400+',
-    label: 'Produtos Marca Própria',
-    detail: 'Qualidade testada ao melhor preço todos os dias.',
-  },
-  {
-    value: '3206',
-    label: 'Loja Casa Del Mar Furadouro',
-    detail: 'Na Av. dos Bombeiros Voluntários do Porto nº34, junto à praia.',
+    value: '08:30',
+    label: 'Pão Quente de Manhã e à Tarde',
+    detail: 'Fornadas diárias às 08:30 e às 16:30 no Supermercado Casa Del Mar.',
   },
   {
     value: '100%',
-    label: 'Frescos & Pão Quente Diário',
-    detail: 'Fornadas de manhã e à tarde, frutas, legumes e charcutaria ao corte.',
+    label: 'Frescos & Talho ao Corte',
+    detail: 'Frutas, legumes, peixaria e charcutaria preparados na hora.',
+  },
+  {
+    value: 'Nº 34',
+    label: 'No Coração do Furadouro',
+    detail: 'Na Av. dos Bombeiros Voluntários do Porto, a dois passos da praia.',
+  },
+  {
+    value: '400+',
+    label: 'Artigos Rede Amanhecer',
+    detail: 'Marca própria e campanhas de poupança disponíveis na nossa loja.',
   },
 ];
 

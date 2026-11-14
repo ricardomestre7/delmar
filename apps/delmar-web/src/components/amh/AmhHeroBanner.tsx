@@ -18,18 +18,18 @@ export function AmhHeroBanner() {
         >
           <div className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-amh-red shadow-sm">
             <Sparkles className="h-3.5 w-3.5" />
-            Rede Amanhecer · Loja {STORE_PROFILE.code} · {STORE_PROFILE.locality}
+            Supermercado Casa Del Mar · {STORE_PROFILE.locality}, {STORE_PROFILE.city}
           </div>
 
           <h1 className="amh-display mt-5 text-amh-navy">
-            O seu supermercado de{' '}
-            <span className="text-amh-red">proximidade</span> no Furadouro.
+            O supermercado da{' '}
+            <span className="text-amh-red">sua casa</span> no Furadouro.
           </h1>
 
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-amh-slate sm:text-xl">
-            <strong>{STORE_PROFILE.name}</strong> junta a confiança e os preços da rede{' '}
-            <strong>Amanhecer</strong> à conveniência do seu bairro: pão quente diário, frescos,
-            marca própria e sistema próprio de reserva para levantar sem espera.
+            No <strong>{STORE_PROFILE.name}</strong> encontra pão quente todos os dias, fruta e
+            legumes selecionados, talho e charcutaria ao corte — com os preços e a marca própria
+            da rede parceira <strong>Amanhecer</strong>.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3.5">
@@ -81,9 +81,9 @@ export function AmhHeroBanner() {
             <div className="p-7 pt-3">
               <div className="border-b border-white/15 pb-4">
                 <p className="text-xs font-bold uppercase tracking-wider text-amh-cream">
-                  Supermercado Casa Del Mar
+                  {STORE_PROFILE.locality} · {STORE_PROFILE.city}
                 </p>
-                <p className="mt-0.5 text-xl font-extrabold">Amanhecer Furadouro · Loja {STORE_PROFILE.code}</p>
+                <p className="mt-0.5 text-xl font-extrabold">{STORE_PROFILE.name}</p>
               </div>
 
             <div className="mt-5 space-y-3.5 text-sm">

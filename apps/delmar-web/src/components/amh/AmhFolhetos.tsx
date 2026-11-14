@@ -35,10 +35,10 @@ export function AmhFolhetos({ showSearch = true }: { showSearch?: boolean }) {
               <Tag className="h-3.5 w-3.5" />
               Poupança da Semana
             </span>
-            <h2 className="amh-h2 mt-2 text-amh-navy">Folhetos & Ofertas Amanhecer</h2>
+            <h2 className="amh-h2 mt-2 text-amh-navy">Ofertas Casa Del Mar & Folhetos</h2>
             <p className="mt-2 max-w-2xl text-base text-amh-slate">
-              Campanhas da rede nacional Amanhecer e destaques exclusivos de frescos no Supermercado
-              Casa Del Mar.
+              Destaques de frescos e padaria do Supermercado Casa Del Mar, em conjunto com os
+              folhetos da rede parceira Amanhecer.
             </p>
           </div>
 

@@ -47,19 +47,19 @@ export function AmhMenu() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amh-red text-white shadow-sm">
-            <span className="text-xl font-extrabold tracking-tight">A</span>
+            <span className="text-lg font-extrabold tracking-tight">DM</span>
           </div>
           <div>
             <div className="flex items-center gap-2">
               <span className="text-lg font-extrabold tracking-tight text-amh-navy">
-                amanhecer
+                Casa Del Mar
               </span>
               <span className="rounded-full bg-amh-cream px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-amh-red">
                 Furadouro
               </span>
             </div>
             <p className="text-xs font-medium text-amh-slate">
-              {STORE_PROFILE.name} · Loja {STORE_PROFILE.code}
+              Supermercado · Rede Amanhecer
             </p>
           </div>
         </Link>
