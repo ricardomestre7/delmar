@@ -1,0 +1,8 @@
+{
+  "name": "cylindermargin-metrics-engine",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Motor de métricas CylinderMargin: 6 domínios, zero dependências, determinístico",
+  "main": "index.js",
+  "scripts": { "test": "node --test test/*.test.js" }
+}
