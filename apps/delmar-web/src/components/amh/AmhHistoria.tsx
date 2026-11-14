@@ -86,7 +86,7 @@ export function AmhHistoria() {
           <div className="delmar-mascot-stage relative isolate mt-4 md:col-span-4">
             <div aria-hidden="true" className="absolute inset-x-4 bottom-2 top-10 -z-10 rounded-3xl border border-red-100 bg-gradient-to-br from-amh-cream to-red-50 shadow-inner" />
             <img
-              src="/images/delmar-mascote-3d.webp"
+              src="/images/delmar-mascote-personalizado.webp"
               alt="Mascote Delmar de avental vermelho, com um cesto de pão e frescos, a dar as boas-vindas"
               width={1312} height={1199}
               loading="lazy"
