@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { AmhHeroBanner } from '@/components/amh/AmhHeroBanner';
 import { AmhBigNumbers } from '@/components/amh/AmhBigNumbers';
+import { AmhHistoria } from '@/components/amh/AmhHistoria';
 import { AmhFolhetos } from '@/components/amh/AmhFolhetos';
 import { AmhStoreMap } from '@/components/amh/AmhStoreMap';
 import { AmhTestimonials } from '@/components/amh/AmhRecipesAndFaqs';
@@ -46,6 +47,7 @@ export default function HomePage() {
       </section>
 
       <AmhFolhetos />
+      <AmhHistoria />
       <AmhStoreMap />
       <AmhTestimonials />
     </>

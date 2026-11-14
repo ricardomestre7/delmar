@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AmhBigNumbers } from '@/components/amh/AmhBigNumbers';
+import { AmhHistoria } from '@/components/amh/AmhHistoria';
 import { STORE_PROFILE } from '@/lib/store-data';
 
 export const metadata: Metadata = {
@@ -48,6 +49,7 @@ export default function QuemSomosPage() {
         </div>
       </section>
 
+      <AmhHistoria />
       <AmhBigNumbers />
     </div>
   );

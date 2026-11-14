@@ -65,18 +65,26 @@ export function AmhHeroBanner() {
           transition={{ duration: 0.45, delay: 0.1 }}
           className="lg:col-span-5"
         >
-          <div className="relative rounded-3xl bg-amh-navy p-7 text-white shadow-2xl">
-            <div className="flex items-center justify-between border-b border-white/15 pb-4">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-amh-cream">
-                  Supermercado Casa Del Mar
-                </p>
-                <p className="mt-0.5 text-xl font-extrabold">Amanhecer Furadouro</p>
-              </div>
-              <span className="rounded-full bg-amh-red px-3 py-1 text-xs font-bold">
+          <div className="relative overflow-hidden rounded-3xl bg-amh-navy text-white shadow-2xl">
+            <div className="relative h-48 w-full overflow-hidden">
+              <img
+                src="/images/historia/fachada-amanhecer.jpg"
+                alt="Fachada atual do Supermercado Casa Del Mar Amanhecer no Furadouro"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-amh-navy via-amh-navy/40 to-transparent" />
+              <span className="absolute right-4 top-4 rounded-full bg-amh-red px-3 py-1 text-xs font-bold shadow">
                 Aberto Hoje
               </span>
             </div>
+
+            <div className="p-7 pt-3">
+              <div className="border-b border-white/15 pb-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-amh-cream">
+                  Supermercado Casa Del Mar
+                </p>
+                <p className="mt-0.5 text-xl font-extrabold">Amanhecer Furadouro · Loja {STORE_PROFILE.code}</p>
+              </div>
 
             <div className="mt-5 space-y-3.5 text-sm">
               <div className="rounded-2xl bg-white/10 p-4">
@@ -115,6 +123,7 @@ export function AmhHeroBanner() {
                 </a>
               </div>
             </div>
+          </div>
           </div>
         </motion.div>
       </div>
