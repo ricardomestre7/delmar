@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # Base de Dados Relacional Primária (PostgreSQL 16)
+  postgres:
+    image: postgres:16-alpine
+    container_name: cylinder_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cylinder_db}
+      POSTGRES_USER: ${POSTGRES_USER:-cylinder_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cylinder_secure_pass_2026}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d:ro
+    networks:
+      - cylinder_internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cylinder_admin} -d ${POSTGRES_DB:-cylinder_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Cache em Memória & Filas (Redis 7)
+  redis:
+    image: redis:7-alpine
+    container_name: cylinder_redis
+    restart: always
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-redis_secure_pass_2026}
+    volumes:
+      - redis_data:/data
+    networks:
+      - cylinder_internal
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-redis_secure_pass_2026}", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  cylinder_internal:
+    driver: bridge

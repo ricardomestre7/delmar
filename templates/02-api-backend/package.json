@@ -1,0 +1,11 @@
+{
+  "name": "cylindermargin-api-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Template T2: API / Backend Node.js & Motores IA - CylinderMargin Coolify",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  }
+}
