@@ -66,7 +66,7 @@ export default function RedeInternaPage() {
     });
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));
-      setAuthError(data.error || 'PIN inválido.');
+      setAuthError(data.error || 'Senha inválida.');
       return;
     }
     setPin('');
@@ -134,14 +134,14 @@ export default function RedeInternaPage() {
           <form onSubmit={handleLogin} className="mt-6 space-y-4">
             <div>
               <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-amh-cream">
-                PIN da Loja
+                Senha da Loja
               </label>
               <input
                 type="password"
                 required
                 value={pin}
                 onChange={(e) => setPin(e.target.value)}
-                placeholder="Introduza o PIN (padrão: 3206)"
+                placeholder="Introduza a senha própria da loja"
                 className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder-stone-400 outline-none focus:border-amh-red"
               />
             </div>
@@ -311,4 +311,5 @@ export default function RedeInternaPage() {
     </div>
   );
 }
+
 

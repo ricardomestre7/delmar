@@ -36,7 +36,7 @@ export interface StoreOrder {
   updatedAt: string;
 }
 
-const DATA_FILE = path.join(process.cwd(), 'data', 'orders.json');
+const DATA_FILE = path.join(process.env.DATA_DIR || path.join(process.cwd(), 'data'), 'orders.json');
 
 // Fallback em memória caso o sistema de ficheiros seja read-only
 let memoryOrders: StoreOrder[] = [];
@@ -173,4 +173,5 @@ export async function updateOrderStatus(idOrCode: string, status: OrderStatus): 
   await writeOrdersToDisk(orders);
   return orders[idx];
 }
+
 

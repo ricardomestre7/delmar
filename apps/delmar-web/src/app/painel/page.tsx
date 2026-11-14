@@ -1,5 +1,6 @@
 'use client';
 
+import BusinessDashboard from '@/components/BusinessDashboard';
 import React, { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Download, Globe, MessageSquareLock, RefreshCw, Upload } from 'lucide-react';
@@ -14,6 +15,9 @@ const STATUS_OPTIONS: Array<{ value: OrderStatus; label: string; color: string }
 ];
 
 export default function PainelLojaPage() {
+  const [authenticated,setAuthenticated]=useState<boolean|null>(null);
+  const [password,setPassword]=useState('');
+  const [authError,setAuthError]=useState('');
   const [orders, setOrders] = useState<StoreOrder[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -33,6 +37,7 @@ export default function PainelLojaPage() {
     try {
       const res = await fetch('/api/orders', { cache: 'no-store' });
       const data = await res.json();
+      if(!res.ok){setAuthenticated(false);setOrders([]);return;}
       if (Array.isArray(data.orders)) {
         setOrders(data.orders);
       }
@@ -42,8 +47,9 @@ export default function PainelLojaPage() {
   }, []);
 
   useEffect(() => {
-    loadOrders();
-  }, [loadOrders]);
+    fetch('/api/internal/auth',{cache:'no-store'}).then(r=>r.json()).then(v=>setAuthenticated(v.authenticated===true)).catch(()=>setAuthenticated(false));
+  }, []);
+  useEffect(()=>{if(authenticated)loadOrders();},[authenticated,loadOrders]);
 
   async function handleCsvUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -101,6 +107,8 @@ export default function PainelLojaPage() {
     }
   }
 
+  if(authenticated===null)return <div className="mx-auto max-w-xl px-6 py-16">A verificar acesso…</div>;
+  if(!authenticated)return <div className="mx-auto max-w-lg px-6 py-16"><h1 className="text-3xl font-bold text-amh-navy">Área privada do Delmar</h1><p className="mt-3 text-sm text-amh-slate">Resultados e gestão do Sr. Pedro. Entre com a senha própria da loja.</p><form className="mt-6 space-y-4" onSubmit={async e=>{e.preventDefault();setAuthError('');try{const r=await fetch('/api/internal/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password})});const v=await r.json();if(!r.ok)throw Error(v.error);setPassword('');setAuthenticated(true);}catch(e){setAuthError((e as Error).message)}}}><label className="block text-sm font-bold">Senha<input type="password" autoComplete="current-password" required value={password} onChange={e=>setPassword(e.target.value)} className="mt-2 w-full rounded-xl border border-stone-200 px-4 py-3"/></label><button className="rounded-full bg-amh-red px-6 py-3 font-bold text-white">Entrar</button>{authError&&<p role="alert">{authError}</p>}</form></div>;
   return (
     <div className="bg-amh-cream/35 py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -109,7 +117,7 @@ export default function PainelLojaPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-amh-red">
               Operação Interna · Loja 3206
             </span>
-            <h1 className="amh-h1 mt-1 text-amh-navy">Painel de Encomendas</h1>
+            <h1 className="amh-h1 mt-1 text-amh-navy">Resultados & Encomendas</h1>
           </div>
           <div className="flex flex-wrap items-center gap-2.5">
             <Link
@@ -130,6 +138,8 @@ export default function PainelLojaPage() {
           </div>
         </div>
 
+        <div className="mt-4 text-right"><button className="text-sm font-bold text-amh-red" onClick={async()=>{await fetch('/api/internal/auth',{method:'DELETE'});setAuthenticated(false);setOrders([])}}>Terminar sessão</button></div>
+        <BusinessDashboard name="Delmar · Sr. Pedro" />
         {/* Ferramentas de Catálogo & Sincronização */}
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           <div className="rounded-3xl border border-stone-200 bg-white p-6 shadow-sm">
@@ -297,4 +307,5 @@ export default function PainelLojaPage() {
     </div>
   );
 }
+
 

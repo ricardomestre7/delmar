@@ -326,7 +326,7 @@ export default function EncomendarPage() {
               {trackedOrder && (
                 <div className="mt-4 rounded-2xl bg-amh-cream/60 p-4 text-sm">
                   <p className="font-extrabold text-amh-navy">
-                    {trackedOrder.code} — {trackedOrder.customerName}
+                    {trackedOrder.code}
                   </p>
                   <p className="mt-1 font-semibold text-amh-red">
                     Estado: {STATUS_LABELS[trackedOrder.status]}
@@ -343,4 +343,5 @@ export default function EncomendarPage() {
     </div>
   );
 }
+
 

@@ -1,3 +1,4 @@
+import {isStaffAuthenticated} from '@/lib/internal-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import { OrderStatus, updateOrderStatus } from '@/lib/orders-store';
 
@@ -5,6 +6,7 @@ export async function PATCH(
   req: NextRequest,
   context: { params: Promise<{ id: string }> },
 ) {
+  if(!(await isStaffAuthenticated()))return NextResponse.json({error:'Autenticação necessária.'},{status:401});
   try {
     const { id } = await context.params;
     const body = await req.json();
@@ -19,4 +21,5 @@ export async function PATCH(
     return NextResponse.json({ error: message }, { status: 400 });
   }
 }
+
 
