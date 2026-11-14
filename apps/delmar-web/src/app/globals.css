@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================================
+   AMANHECER / CASA DEL MAR DESIGN SYSTEM
+   Baseado na engenharia extraída de amanhecer.pt (utilsLayout.css + DXP hooks)
+   ============================================================================= */
+:root {
+  --amh-cream: #f6ede4;
+  --amh-red: #ed1b28;
+  --amh-red-dark: #d5211c;
+  --amh-red-deep: #b01020;
+  --amh-navy: #0c1118;
+  --amh-ink: #131a26;
+  --amh-slate: #303c50;
+  --amh-purple: #622b7b;
+  --amh-blue: #003764;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #ffffff;
+  color: var(--amh-navy);
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .amh-display {
+    font-size: clamp(2.5rem, 5vw, 4.75rem);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .amh-h1 {
+    font-size: clamp(2rem, 4vw, 3.875rem);
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .amh-h2 {
+    font-size: clamp(1.75rem, 3vw, 3.125rem);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  .amh-title {
+    font-size: clamp(1.5rem, 2.2vw, 2.5rem);
+    line-height: 1.25;
+    font-weight: 700;
+  }
+}
+

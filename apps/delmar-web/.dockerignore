@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+.env*.local
+dist
+build
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Dockerfile*
+.dockerignore
+data/orders.json
+data/catalog.json
+data/internal-chat.json
+
