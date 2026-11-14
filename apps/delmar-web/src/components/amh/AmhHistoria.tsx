@@ -82,14 +82,15 @@ export function AmhHistoria() {
         </div>
 
         {/* Destaque De Vizinho para Vizinho */}
-        <div className="mt-8 grid items-center gap-6 rounded-3xl border border-stone-200 bg-white p-6 shadow-sm md:grid-cols-12 md:p-8">
-          <div className="overflow-hidden rounded-2xl md:col-span-4">
+        <div className="mt-16 grid items-center gap-6 overflow-visible rounded-3xl border border-stone-200 bg-white p-6 shadow-lg md:grid-cols-12 md:p-8">
+          <div className="delmar-mascot-stage relative isolate mt-4 md:col-span-4">
+            <div aria-hidden="true" className="absolute inset-x-4 bottom-2 top-10 -z-10 rounded-3xl border border-red-100 bg-gradient-to-br from-amh-cream to-red-50 shadow-inner" />
             <img
-              src="/images/delmar-mascote.webp"
+              src="/images/delmar-mascote-3d.webp"
               alt="Mascote Delmar de avental vermelho, com um cesto de pão e frescos, a dar as boas-vindas"
-              width={1536} height={1024}
+              width={1312} height={1199}
               loading="lazy"
-              className="aspect-[3/2] h-auto w-full bg-amh-cream object-contain"
+              className="delmar-mascot-pop relative -mt-14 h-auto w-full origin-bottom object-contain"
             />
           </div>
           <div className="md:col-span-8">
