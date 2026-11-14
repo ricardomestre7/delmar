@@ -46,20 +46,8 @@ export function AmhMenu() {
       {/* Navegação principal (c/amh_Menu) */}
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-4 gap-y-3 px-4 py-3.5 sm:px-6 lg:px-8">
         <Link href="/" className="flex min-w-0 shrink-0 items-center gap-3">
-          <img src="/images/delmar-logo.jpeg" alt="Supermercado Delmar" width={180} height={90} className="h-16 w-32 shrink-0 rounded-lg bg-black object-contain sm:w-36" />
-          <div className="hidden md:block">
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-extrabold tracking-tight text-amh-navy">
-                Casa Del Mar
-              </span>
-              <span className="rounded-full bg-amh-cream px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-amh-red">
-                Furadouro
-              </span>
-            </div>
-            <p className="text-xs font-medium text-amh-slate">
-              Supermercado · Rede Amanhecer
-            </p>
-          </div>
+          <img src="/images/delmar-logo-novo.webp" alt="Supermercado Delmar" width={1919} height={820} className="h-auto w-32 shrink-0 rounded-xl bg-amh-cream object-contain sm:w-52" />
+
         </Link>
 
         <nav aria-label="Navegação principal" className="order-last hidden w-full flex-wrap items-center justify-center gap-x-2 gap-y-2 border-t border-stone-200 pt-3 lg:flex">

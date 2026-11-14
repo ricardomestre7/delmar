@@ -8,8 +8,8 @@ export function AmhFooter() {
     <footer className="bg-amh-navy text-stone-300">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div>
-          <div className="flex items-center gap-2.5">
-            <img src="/images/delmar-logo.jpeg" alt="Supermercado Delmar" width={160} height={80} className="h-16 w-32 rounded-lg bg-black object-contain" loading="lazy" />
+          <div className="flex flex-col items-start gap-3">
+            <img src="/images/delmar-logo-novo.webp" alt="Supermercado Delmar" width={1919} height={820} className="h-auto w-full max-w-64 rounded-xl bg-amh-cream object-contain" loading="lazy" />
             <div>
               <p className="text-lg font-extrabold text-white">Casa Del Mar</p>
               <p className="text-xs text-amh-cream">Supermercado · Furadouro (Rede Amanhecer)</p>

@@ -60,8 +60,8 @@ export function AmhHeroBanner() {
           className="lg:col-span-5"
         >
           <div className="relative overflow-hidden rounded-3xl bg-amh-navy text-white shadow-2xl">
-            <div className="bg-black px-6 py-4">
-              <img src="/images/delmar-logo.jpeg" alt="Supermercado Delmar" width={1080} height={540} className="mx-auto h-24 w-full max-w-xs object-contain" />
+            <div className="delmar-digital-brand border-b border-red-100 px-6 py-5">
+              <img src="/images/delmar-logo-novo.webp" alt="Supermercado Delmar" width={1919} height={820} className="mx-auto h-auto w-full max-w-md rounded-xl object-contain" />
             </div>
             <figure className="m-0">
               <div className="relative aspect-[4/3] overflow-hidden bg-stone-200">
