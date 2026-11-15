@@ -3,7 +3,7 @@
 import BusinessDashboard from '@/components/BusinessDashboard';
 import React, { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Download, Globe, MessageSquareLock, RefreshCw, Upload } from 'lucide-react';
+import { Download, Globe, Lock, LogOut, MessageSquareLock, RefreshCw, Upload } from 'lucide-react';
 import { formatEur } from '@/lib/catalog-data';
 import type { OrderStatus, StoreOrder } from '@/lib/orders-store';
 
@@ -15,9 +15,11 @@ const STATUS_OPTIONS: Array<{ value: OrderStatus; label: string; color: string }
 ];
 
 export default function PainelLojaPage() {
-  const [authenticated,setAuthenticated]=useState<boolean|null>(null);
-  const [password,setPassword]=useState('');
-  const [authError,setAuthError]=useState('');
+  const [authChecked, setAuthChecked] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
+  const [pinInput, setPinInput] = useState('');
+  const [authError, setAuthError] = useState<string | null>(null);
+  const [loggingIn, setLoggingIn] = useState(false);
   const [orders, setOrders] = useState<StoreOrder[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -47,9 +49,55 @@ export default function PainelLojaPage() {
   }, []);
 
   useEffect(() => {
-    fetch('/api/internal/auth',{cache:'no-store'}).then(r=>r.json()).then(v=>setAuthenticated(v.authenticated===true)).catch(()=>setAuthenticated(false));
-  }, []);
-  useEffect(()=>{if(authenticated)loadOrders();},[authenticated,loadOrders]);
+    let active = true;
+    fetch('/api/internal/auth', { cache: 'no-store' })
+      .then((r) => r.json())
+      .then((d) => {
+        if (!active) return;
+        const ok = d.authenticated === true;
+        setAuthenticated(ok);
+        setAuthChecked(true);
+        if (ok) {
+          loadOrders();
+        }
+      })
+      .catch(() => {
+        if (active) setAuthChecked(true);
+      });
+    return () => {
+      active = false;
+    };
+  }, [loadOrders]);
+
+  async function handleLogin(e: React.FormEvent) {
+    e.preventDefault();
+    setAuthError(null);
+    setLoggingIn(true);
+    try {
+      const res = await fetch('/api/internal/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pinInput }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setAuthError(data.error || 'Senha incorreta.');
+        return;
+      }
+      setAuthenticated(true);
+      setPinInput('');
+      await loadOrders();
+    } catch {
+      setAuthError('Falha ao validar senha.');
+    } finally {
+      setLoggingIn(false);
+    }
+  }
+
+  async function handleLogout() {
+    await fetch('/api/internal/auth', { method: 'DELETE' });
+    setAuthenticated(false);
+  }
 
   async function handleCsvUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -107,8 +155,60 @@ export default function PainelLojaPage() {
     }
   }
 
-  if(authenticated===null)return <div className="mx-auto max-w-xl px-6 py-16">A verificar acesso…</div>;
-  if(!authenticated)return <div className="mx-auto max-w-lg px-6 py-16"><h1 className="text-3xl font-bold text-amh-navy">Área privada do Delmar</h1><p className="mt-3 text-sm text-amh-slate">Resultados e gestão do Sr. Pedro. Entre com a senha própria da loja.</p><form className="mt-6 space-y-4" onSubmit={async e=>{e.preventDefault();setAuthError('');try{const r=await fetch('/api/internal/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password})});const v=await r.json();if(!r.ok)throw Error(v.error);setPassword('');setAuthenticated(true);}catch(e){setAuthError((e as Error).message)}}}><label className="block text-sm font-bold">Senha<input type="password" autoComplete="current-password" required value={password} onChange={e=>setPassword(e.target.value)} className="mt-2 w-full rounded-xl border border-stone-200 px-4 py-3"/></label><button className="rounded-full bg-amh-red px-6 py-3 font-bold text-white">Entrar</button>{authError&&<p role="alert">{authError}</p>}</form></div>;
+  if (!authChecked) {
+    return (
+      <div className="flex min-h-[70vh] items-center justify-center bg-amh-cream/40 px-4 py-16">
+        <p className="text-sm font-semibold text-stone-500">A verificar acesso…</p>
+      </div>
+    );
+  }
+
+  if (!authenticated) {
+    return (
+      <div className="flex min-h-[75vh] items-center justify-center bg-amh-cream/40 px-4 py-16">
+        <form
+          onSubmit={handleLogin}
+          className="w-full max-w-md rounded-3xl border border-stone-200/80 bg-white p-8 text-center shadow-[0_20px_50px_-15px_rgba(0,0,0,0.08)] sm:p-10"
+        >
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-amh-red text-white shadow-sm">
+            <Lock className="h-5 w-5" />
+          </div>
+
+          <h1 className="mt-5 font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
+            Admin Central — Casa Del Mar
+          </h1>
+          <p className="mt-2 text-sm leading-relaxed text-stone-600">
+            Resultados, encomendas e gestão do Sr. Pedro (Loja 3206).
+          </p>
+
+          <div className="mt-6">
+            <input
+              type="password"
+              autoComplete="current-password"
+              required
+              value={pinInput}
+              onChange={(e) => setPinInput(e.target.value)}
+              placeholder="Senha de acesso da loja"
+              className="w-full rounded-2xl border border-stone-200 bg-white px-4 py-3.5 text-center text-sm font-semibold text-stone-900 placeholder:font-normal placeholder:text-stone-400 focus:border-amh-red focus:outline-none focus:ring-2 focus:ring-amh-red/15"
+              autoFocus
+            />
+          </div>
+
+          {authError && (
+            <p role="alert" className="mt-3 text-xs font-bold text-amh-red">{authError}</p>
+          )}
+
+          <button
+            type="submit"
+            disabled={loggingIn || !pinInput.trim()}
+            className="mt-4 w-full rounded-full bg-amh-red px-6 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-amh-red-deep disabled:opacity-50"
+          >
+            {loggingIn ? 'A entrar...' : 'Entrar no Painel Admin'}
+          </button>
+        </form>
+      </div>
+    );
+  }
   return (
     <div className="bg-amh-cream/35 py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -134,6 +234,14 @@ export default function PainelLojaPage() {
             >
               <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
               Atualizar
+            </button>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-4 py-2.5 text-sm font-bold text-stone-700 hover:border-amh-red hover:text-amh-red"
+            >
+              <LogOut className="h-4 w-4" />
+              Sair
             </button>
           </div>
         </div>
