@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useState } from 'react';
 import './business-dashboard.css';
+import CrmMercadoPanel from './CrmMercadoPanel';
+import SystemGuide from './SystemGuide';
 
 type Day = {
   date: string;
@@ -52,6 +54,7 @@ const money = (n: number) =>
   new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR' }).format(n);
 
 export default function BusinessDashboard({ name }: { name: string }) {
+  const [activeSystem, setActiveSystem] = useState<'contabil' | 'crm'>('contabil');
   const [days, setDays] = useState<Day[]>([]);
   const [ops, setOps] = useState<Operation[]>([]);
   const [europe, setEurope] = useState<EuropeIndices | null>(null);
@@ -217,14 +220,74 @@ export default function BusinessDashboard({ name }: { name: string }) {
           <small>ÁREA PRIVADA · {name}</small>
           <h2>Compreender o negócio. Decidir com dados.</h2>
           <p>
-            Indicadores RENASCENTIA: contabilidade, crescimento e contexto macroeconómico europeu.
-            Os lançamentos financeiros são independentes dos pedidos online.
+            Indicadores RENASCENTIA: contabilidade, crescimento, contexto europeu e CRM
+            operacional de mercado.
           </p>
         </div>
         <button type="button" onClick={load} disabled={loading}>
           Atualizar
         </button>
       </div>
+
+      {/* Seletor dos 2 sistemas internos */}
+      <div
+        role="tablist"
+        aria-label="Sistemas internos da loja"
+        style={{
+          display: 'flex',
+          gap: 10,
+          flexWrap: 'wrap',
+          marginTop: 14,
+          padding: 6,
+          background: '#eef4f1',
+          borderRadius: 12,
+          border: '1px solid #d5e2dc',
+          width: 'fit-content',
+        }}
+      >
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeSystem === 'contabil'}
+          onClick={() => setActiveSystem('contabil')}
+          style={{
+            background: activeSystem === 'contabil' ? '#17322a' : 'transparent',
+            color: activeSystem === 'contabil' ? '#fff' : '#17322a',
+            border: 'none',
+            borderRadius: 8,
+            padding: '10px 18px',
+            fontWeight: 700,
+            fontSize: 13,
+            cursor: 'pointer',
+          }}
+        >
+          Sistema Contábil &amp; Economia
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeSystem === 'crm'}
+          onClick={() => setActiveSystem('crm')}
+          style={{
+            background: activeSystem === 'crm' ? '#17322a' : 'transparent',
+            color: activeSystem === 'crm' ? '#fff' : '#17322a',
+            border: 'none',
+            borderRadius: 8,
+            padding: '10px 18px',
+            fontWeight: 700,
+            fontSize: 13,
+            cursor: 'pointer',
+          }}
+        >
+          CRM Mercado
+        </button>
+      </div>
+
+      {activeSystem === 'crm' ? (
+        <CrmMercadoPanel />
+      ) : (
+        <>
+          <SystemGuide mode="contabil" />
 
       {/* Índices Económicos da Europa */}
       {europe && (
@@ -636,6 +699,8 @@ export default function BusinessDashboard({ name }: { name: string }) {
           <button>Guardar fecho diário</button>
         </form>
       </details>
+        </>
+      )}
 
       {msg && (
         <p className="bd-message" role="status">
